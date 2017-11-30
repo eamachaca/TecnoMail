@@ -31,7 +31,7 @@
                     <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
                 </div>
-                <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left"
+                <button href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left"
                         title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh
                 </button>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
@@ -51,8 +51,8 @@
                     <td class="check-mail">
                         <input type="checkbox" class="i-checks">
                     </td>
-                    <td class="mail-ontact"><a href="#">Anna Smith</a></td>
-                    <td class="mail-subject"><a href="#">Lorem ipsum dolor noretek imit
+                    <td class="mail-ontact"><a href="{{route('view')}}">Anna Smith</a></td>
+                    <td class="mail-subject"><a href="{{route('view')}}">Lorem ipsum dolor noretek imit
                             set.</a></td>
                     <td class=""><i class="fa fa-paperclip"></i></td>
                     <td class="text-right mail-date">6.10 AM</td>
@@ -61,11 +61,11 @@
                     <td class="check-mail">
                         <input type="checkbox" class="i-checks">
                     </td>
-                    <td class="mail-ontact"><a href="#">Facebook</a> <span
+                    <td class="mail-ontact"><a href="{{route('view')}}">Facebook</a> <span
                                 class="label label-warning pull-right">Clients</span></td>
-                    <td class="mail-subject"><a href="#">Many desktop publishing packages and
+                    <td class="mail-subject"><a href="{{route('view')}}">Many desktop publishing packages and
                             web page editors.</a></td>
-                    <td class=""></td>
+                    <td class=""><i class="none"></i></td>
                     <td class="text-right mail-date">Jan 16</td>
                 </tr>
                 </tbody>

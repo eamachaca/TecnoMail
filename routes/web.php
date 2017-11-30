@@ -14,6 +14,14 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
+Route::get('compose', [
+    'as' => 'compose',
+    'uses' => 'HomeController@compose'
+]);
+Route::get('view', [
+    'as' => 'view',
+    'uses' => 'HomeController@view'
+]);
 Route::get('deito', function () {
     $hostname = '{200.87.51.3/pop3/notls}INBOX';
     $username = 'grupo18sc';
@@ -77,7 +85,7 @@ Route::get('deito', function () {
                 }
             } // for($i = 0; $i < count($structure->parts); $i++)
         } // if(isset($structure->parts) && count($structure->parts))
-        $dotero[] = [$overview, $message, $structure, $overview[0]->subject, filter_var($overview[0]->to,FILTER_VALIDATE_EMAIL), $overview[0]->from];//$overview[0];
+        $dotero[] = [$overview, $message, $structure, $overview[0]->subject, filter_var($overview[0]->to, FILTER_VALIDATE_EMAIL), $overview[0]->from];//$overview[0];
         imap_delete($inbox, $email_number);
     }
     //imap_expunge($inbox);
@@ -85,10 +93,12 @@ Route::get('deito', function () {
     dd($dotero);
 
 });
+
 Auth::routes();
+
 Route::get('home', [
     'as' => 'home',
-    'uses' => 'HomeController@index'
+    'uses' => 'HomeController@mail'
 ])->middleware('auth');
 //Route::get('/home', 'HomeController@index')->name('home');
 

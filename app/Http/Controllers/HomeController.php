@@ -21,8 +21,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function mail()
     {
-        return view('home');
+        return view('mail');
+    }
+
+    public function compose()
+    {
+        return view('compose');
+    }
+
+    public function view()
+    {
+        return view('view');
     }
 }

@@ -15,12 +15,12 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-content mailbox-content">
                             <div class="file-manager">
-                                <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose
+                                <a class="btn btn-block btn-primary compose-mail" href="{{route('compose')}}">Compose
                                     Mail</a>
                                 <div class="space-25"></div>
                                 <h5>Folders</h5>
                                 <ul class="folder-list m-b-md" style="padding: 0">
-                                    <li><a href="#"> <i class="fa fa-inbox "></i> Inbox <span
+                                    <li><a href="{{route('home')}}"> <i class="fa fa-inbox "></i> Inbox <span
                                                     class="label label-black pull-right"> Mensaje loco xD 16</span> </a></li>
                                 </ul>
                                 <h5>Categories</h5>
