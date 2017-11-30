@@ -12,9 +12,9 @@
     <div class="col-lg-9 animated fadeInRight">
         <div class="mail-box-header">
             <div class="pull-right tooltip-demo">
-                <a href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
                    data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
-                <a href="{{route('home')}}" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-danger btn-sm" data-toggle="tooltip"
                    data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
             </div>
             <h2>
@@ -57,11 +57,11 @@
                 <div class="clearfix"></div>
             </div>
             <div class="mail-body text-right tooltip-demo">
-                <a href="{{route('home')}}" class="btn btn-sm btn-primary" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-sm btn-primary" data-toggle="tooltip"
                    data-placement="top" title="Send"><i class="fa fa-reply"></i> Send</a>
-                <a href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
                    data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
-                <a href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
                    data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
             </div>
             <div class="clearfix"></div>

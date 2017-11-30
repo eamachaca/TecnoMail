@@ -31,7 +31,7 @@
                     <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
                 </div>
-                <button href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left"
+                <button href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left"
                         title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh
                 </button>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"

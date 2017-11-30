@@ -96,8 +96,8 @@ Route::get('deito', function () {
 
 Auth::routes();
 
-Route::get('home', [
-    'as' => 'home',
+Route::get('mail', [
+    'as' => 'mail',
     'uses' => 'HomeController@mail'
 ])->middleware('auth');
 //Route::get('/home', 'HomeController@index')->name('home');

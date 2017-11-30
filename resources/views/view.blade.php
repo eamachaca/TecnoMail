@@ -16,7 +16,7 @@
                    data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
                 <a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
                    title="Print email"><i class="fa fa-print"></i> </a>
-                <a href="{{route('home')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
+                <a href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
                    data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
             </div>
             <h2>

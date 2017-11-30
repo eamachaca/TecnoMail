@@ -20,7 +20,7 @@
                                 <div class="space-25"></div>
                                 <h5>Folders</h5>
                                 <ul class="folder-list m-b-md" style="padding: 0">
-                                    <li><a href="{{route('home')}}"> <i class="fa fa-inbox "></i> Inbox <span
+                                    <li><a href="{{route('mail')}}"> <i class="fa fa-inbox "></i> Inbox <span
                                                     class="label label-black pull-right"> Mensaje loco xD 16</span> </a></li>
                                 </ul>
                                 <h5>Categories</h5>
