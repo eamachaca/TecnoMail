@@ -11,7 +11,7 @@
     <div class="col-lg-9 animated fadeInRight">
         <div class="mail-box-header">
 
-            <form method="get" action="index.html" class="pull-right mail-search">
+            <form method="get" action="#" class="pull-right mail-search">
                 <div class="input-group">
                     <input type="text" class="form-control input-sm" name="search"
                            placeholder="Search email">
@@ -51,8 +51,8 @@
                     <td class="check-mail">
                         <input type="checkbox" class="i-checks">
                     </td>
-                    <td class="mail-ontact"><a href="mail_detail.html">Anna Smith</a></td>
-                    <td class="mail-subject"><a href="mail_detail.html">Lorem ipsum dolor noretek imit
+                    <td class="mail-ontact"><a href="#">Anna Smith</a></td>
+                    <td class="mail-subject"><a href="#">Lorem ipsum dolor noretek imit
                             set.</a></td>
                     <td class=""><i class="fa fa-paperclip"></i></td>
                     <td class="text-right mail-date">6.10 AM</td>
@@ -61,9 +61,9 @@
                     <td class="check-mail">
                         <input type="checkbox" class="i-checks">
                     </td>
-                    <td class="mail-ontact"><a href="mail_detail.html">Facebook</a> <span
+                    <td class="mail-ontact"><a href="#">Facebook</a> <span
                                 class="label label-warning pull-right">Clients</span></td>
-                    <td class="mail-subject"><a href="mail_detail.html">Many desktop publishing packages and
+                    <td class="mail-subject"><a href="#">Many desktop publishing packages and
                             web page editors.</a></td>
                     <td class=""></td>
                     <td class="text-right mail-date">Jan 16</td>

@@ -19,8 +19,8 @@ class CreateMailsTable extends Migration
             $table->text('body');
             $table->boolean('readed');
             $table->boolean('sended');
-            $table->integer('mail_id');
-            $table->integer('user_id');
+            $table->unsignedInteger('e_mail_id');
+            $table->unsignedInteger('user_id');
             //$table->timestamps();
         });
     }
