@@ -1,11 +1,9 @@
 @extends('layouts.mail')
 
-@section('css')
-    <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+@section('scss')
 
+    <link href="{{ asset('css/plugins/summernote/summernote.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/summernote/summernote-bs3.css') }}" rel="stylesheet">
 @endsection
 @section('more')
 
@@ -29,12 +27,26 @@
                 <form class="form-horizontal" method="get">
                     <div class="form-group"><label class="col-sm-2 control-label">To:</label>
 
-                        <div class="col-sm-10"><input type="text" class="form-control"
-                                                      value="alex.smith@corporat.com"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                                   @if(isset($to))
+                                   value="{{$to}}"
+                                   @else
+                                   value=""
+                                    @endif
+                            >
+                        </div>
                     </div>
                     <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
 
-                        <div class="col-sm-10"><input type="text" class="form-control" value=""></div>
+                        <div class="col-sm-10"><input type="text" class="form-control"
+                                                      @if(isset($subject))
+                                                      value="{{$subject}}"
+                                                      @else
+                                                      value=""
+                                    @endif
+                            >
+                        </div>
                     </div>
                 </form>
 
@@ -43,15 +55,9 @@
             <div class="mail-text h-200">
 
                 <div class="summernote">
-                    <h3>Hello Jonathan! </h3>
-                    dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the
-                        industry's</strong> standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book. It has survived not only five centuries, but also the leap into electronic
-                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                    <br/>
-                    <br/>
+                    @if(isset($message))
+                        {{$message}}
+                    @endif
 
                 </div>
                 <div class="clearfix"></div>
@@ -71,7 +77,31 @@
     </div>
 @endsection
 @section('js')
-    <!--    <script src="{{ asset('js/app.js') }}"></script>
+    <!--    <script src="js/app.js"></script>
 -->
+
+    <!-- Mainly scripts -->
+    <!--  <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
+    <script src="{{ asset('js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('js/inspinia.js') }}"></script>
+    <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
+
+    <!-- iCheck -->
+    <script src="{{ asset('js/plugins/iCheck/icheck.min.js') }}"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="{{ asset('js/plugins/summernote/summernote.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.summernote').summernote();
+
+        });
+
+    </script>
 
 @endsection
