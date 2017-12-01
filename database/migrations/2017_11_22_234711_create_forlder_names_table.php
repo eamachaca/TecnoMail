@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNameFoldersTable extends Migration
+class CreateForlderNamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateNameFoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('name_folders', function (Blueprint $table) {
+        Schema::create('folder_names', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',10);
+            $table->string('name',30);
             //$table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateNameFoldersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('name_folders');
+        Schema::dropIfExists('folder_names');
     }
 }

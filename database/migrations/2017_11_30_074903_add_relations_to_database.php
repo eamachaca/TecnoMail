@@ -27,9 +27,9 @@ class AddRelationsToDatabase extends Migration
                 ->on('users');
         });
         Schema::table('folders', function (Blueprint $table) {
-            $table->foreign('name_folders_id')
+            $table->foreign('folder_name_id')
                 ->references('id')
-                ->on('name_folders');
+                ->on('folder_names');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -63,7 +63,7 @@ class AddRelationsToDatabase extends Migration
             $table->dropForeign(['e_mail_id'],['user_id']);
         });
         Schema::table('folders', function (Blueprint $table) {
-            $table->dropForeign(['name_folders_id'], ['user_id']);
+            $table->dropForeign(['folder_name_id'], ['user_id']);
         });
         Schema::table('folder_mails', function (Blueprint $table) {
             $table->dropForeign(['mail_id'], [ 'folder_id']);
