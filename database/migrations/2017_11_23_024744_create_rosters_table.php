@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserListsTable extends Migration
+class CreateListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateUserListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_lists', function (Blueprint $table) {
+        Schema::create('lists', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('data',30);
             $table->boolean('is_mail');
-            $table->integer('user_id',false,true);
+            $table->integer('user_id', false, true);
+            $table->unsignedInteger('folder_id');
             //$table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateUserListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_lists');
+        Schema::dropIfExists('lists');
     }
 }
