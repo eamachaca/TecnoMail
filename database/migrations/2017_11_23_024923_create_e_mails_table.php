@@ -15,9 +15,10 @@ class CreateEMailsTable extends Migration
     {
         Schema::create('e_mails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email',40);
-            $table->boolean('sended');
-            $table->boolean('received');
+            $table->string('e_mail', 40);
+            $table->integer('sended')->default(0);
+            $table->integer('received')->default(0);
+            $table->string('name',40);
             $table->timestamps();
         });
     }

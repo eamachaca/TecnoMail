@@ -13,7 +13,7 @@ class AddRelationsToDatabase extends Migration
      */
     public function up()
     {
-        Schema::table('archives', function (Blueprint $table) {
+        Schema::table('files', function (Blueprint $table) {
             $table->foreign('mail_id')
                 ->references('id')
                 ->on('mails');
@@ -42,10 +42,18 @@ class AddRelationsToDatabase extends Migration
                 ->references('id')
                 ->on('folders');
         });
-        Schema::table('user_lists', function (Blueprint $table) {
+        Schema::table('rosters', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
+            $table->foreign('folder_id')
+                ->references('id')
+                ->on('folders');
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('file_id')
+                ->references('id')
+                ->on('files');
         });
     }
 
@@ -56,20 +64,23 @@ class AddRelationsToDatabase extends Migration
      */
     public function down()
     {
-        Schema::table('archives', function (Blueprint $table) {
+        Schema::table('files', function (Blueprint $table) {
             $table->dropForeign(['mail_id']);
         });
         Schema::table('mails', function (Blueprint $table) {
-            $table->dropForeign(['e_mail_id'],['user_id']);
+            $table->dropForeign(['e_mail_id'], ['user_id']);
         });
         Schema::table('folders', function (Blueprint $table) {
             $table->dropForeign(['folder_name_id'], ['user_id']);
         });
         Schema::table('folder_mails', function (Blueprint $table) {
-            $table->dropForeign(['mail_id'], [ 'folder_id']);
+            $table->dropForeign(['mail_id'], ['folder_id']);
         });
-        Schema::table('user_lists', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+        Schema::table('rosters', function (Blueprint $table) {
+            $table->dropForeign(['user_id'], ['folder_id']);
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['file_id']);
         });
     }
 }

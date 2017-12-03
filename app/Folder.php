@@ -17,4 +17,15 @@ class Folder extends Model
     ];
 
     public $timestamps = false;
+
+
+    public function folderName()
+    {
+        return $this->belongsTo(FolderName::class);
+    }
+
+    public function rosters()
+    {
+        return $this->hasMany(Roster::class);
+    }
 }

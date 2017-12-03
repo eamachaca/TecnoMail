@@ -34,7 +34,8 @@ class User extends Authenticatable
         self::created(function ($user) {
             $buzonE = FolderName::firstOrCreate(['name' => 'inbox']);
             $buzonS = FolderName::firstOrCreate(['name' => 'outbox']);
-            $buzonN = FolderName::firstOrCreate(['name' => 'draft']);
+            $draft = FolderName::firstOrCreate(['name' => 'draft']);
+            $junked = FolderName::firstOrCreate(['name' => 'junked']);
             Folder::firstOrCreate([
                 'folder_name_id' => $buzonE->id,
                 'user_id' => $user->id,
@@ -44,10 +45,35 @@ class User extends Authenticatable
                 'user_id' => $user->id,
             ]);
             Folder::firstOrCreate([
-                'folder_name_id' => $buzonN->id,
+                'folder_name_id' => $draft->id,
                 'user_id' => $user->id,
             ]);
-            dd(Folder::all());
+            Folder::firstOrCreate([
+                'folder_name_id' => $junked->id,
+                'user_id' => $user->id,
+            ]);
         });
     }
+
+    public function folderNames()
+    {
+        return $this->belongsToMany(FolderName::class, 'folders');
+    }
+
+    public function mails()
+    {
+        return $this->hasMany(Mail::class);
+    }
+
+    public function rosters()
+    {
+        return $this->hasMany(Roster::class);
+    }
+
+    public function folders()
+    {
+        return $this->hasMany(Folder::class);
+    }
+
+
 }
