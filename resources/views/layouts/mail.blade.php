@@ -21,8 +21,13 @@
                                 <div class="space-25"></div>
                                 <h5>Folders</h5>
                                 <ul class="folder-list m-b-md" style="padding: 0">
-                                    <li><a href="{{route('mail')}}"> <i class="fa fa-inbox "></i> Inbox <span
-                                                    class="label label-black pull-right"> Mensaje loco xD 16</span> </a></li>
+                                    @foreach($folders as $folder)
+                                        <li><a href="{{route('mail',['folder'=>$folder->name])}}"> <i class="fa fa-inbox "></i>
+                                                {{$folder->name}}
+                                                <span
+                                                        class="label label-black pull-right"> Mensaje loco xD 16</span>
+                                            </a></li>
+                                    @endforeach
                                 </ul>
                                 <h5>Categories</h5>
                                 <ul class="category-list" style="padding: 0">

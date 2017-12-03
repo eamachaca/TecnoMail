@@ -14,9 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('css')
 </head>
-<body>
-<div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
+<body style="background-color: #f3f3f4;">
+<div id="app" style="width: 100%;height: 100%;">
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: #18a689;color: white;">
         <div class="container">
             <div class="navbar-header">
 
@@ -30,7 +30,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a style="color: white;" class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
@@ -49,7 +49,7 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                <a style="color: white;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

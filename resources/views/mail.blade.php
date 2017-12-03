@@ -11,13 +11,14 @@
     <div class="col-lg-9 animated fadeInRight">
         <div class="mail-box-header">
 
-            <form method="get" action="#" class="pull-right mail-search">
+            <form method="get" action="{{route('mail')}}" class="pull-right mail-search">
                 <div class="input-group">
+                    <input type="text" name="folder" value="inbox" hidden>
                     <input type="text" class="form-control input-sm" name="search"
                            placeholder="Search email">
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-sm btn-primary">
-                            Search
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
@@ -31,9 +32,11 @@
                     <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
                 </div>
-                <button href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left"
-                        title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh
-                </button>
+                <a href="{{route('mail',['folder'=>$folder,'search'=>$search])}}" class="btn btn-white btn-sm"
+                   data-toggle="tooltip"
+                   data-placement="left"
+                   title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh
+                </a>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
                         title="Mark as read"><i class="fa fa-eye"></i></button>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
@@ -47,27 +50,31 @@
 
             <table class="table table-hover table-mail">
                 <tbody>
-                <tr class="unread">
-                    <td class="check-mail">
-                        <input type="checkbox" class="i-checks">
-                    </td>
-                    <td class="mail-ontact"><a href="{{route('view')}}">Anna Smith</a></td>
-                    <td class="mail-subject"><a href="{{route('view')}}">Lorem ipsum dolor noretek imit
-                            set.</a></td>
-                    <td class=""><i class="fa fa-paperclip"></i></td>
-                    <td class="text-right mail-date">6.10 AM</td>
-                </tr>
-                <tr class="read">
-                    <td class="check-mail">
-                        <input type="checkbox" class="i-checks">
-                    </td>
-                    <td class="mail-ontact"><a href="{{route('view')}}">Facebook</a> <span
-                                class="label label-warning pull-right">Clients</span></td>
-                    <td class="mail-subject"><a href="{{route('view')}}">Many desktop publishing packages and
-                            web page editors.</a></td>
-                    <td class=""><i class="none"></i></td>
-                    <td class="text-right mail-date">Jan 16</td>
-                </tr>
+                @forelse ($mails as $mail)
+                    @if($mail->readed)
+                        <tr class="read">
+                    @else
+                        <tr class="unread">
+                            @endif
+                            <td class="check-mail">
+                                <input type="checkbox" class="i-checks">
+                            </td>
+                            <td class="mail-contact">
+                                <a href="{{route('view')}}">{{$mail->e_mail}}</a>
+                            </td>
+                            <td class="mail-subject">
+                                <a href="{{route('view')}}">{{$mail->subject}}</a>
+                            </td>
+                            <td class="">@empty(!$mail->rosters)<i class="fa fa-paperclip">@endempty</i></td>
+                            <td class="text-right mail-date">6.10 AM</td>
+                        </tr>
+                        @empty
+                            <tr class="unread">
+                                <td class="mailbox-content" colspan="4">
+                                    No hay mensajes
+                                </td>
+                            </tr>
+                        @endforelse
                 </tbody>
             </table>
         </div>
