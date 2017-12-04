@@ -13,4 +13,11 @@ class FolderMail extends Model
      */
     protected $fillable = ['mail_id', 'folder_id', 'subject', 'e_mail', 'readed'];
     public $timestamps = false;
+
+
+    public function folder()
+    {
+        return $this->belongsTo(Folder::class);
+    }
+
 }

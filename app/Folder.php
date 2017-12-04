@@ -28,4 +28,9 @@ class Folder extends Model
     {
         return $this->hasMany(Roster::class);
     }
+
+    public function folderMails()
+    {
+        return $this->hasMany(folderMails::class);
+    }
 }
