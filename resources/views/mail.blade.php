@@ -13,7 +13,9 @@
 
             <form method="get" action="{{route('mail')}}" class="pull-right mail-search">
                 <div class="input-group">
-                    <input type="text" name="folder" value="inbox" hidden>
+                    @if(!is_null($folder))
+                        <input type="text" name="folder" value="{{$folder}}" hidden>
+                    @endif
                     <input type="text" class="form-control input-sm" name="search"
                            placeholder="Search email">
                     <div class="input-group-btn">
