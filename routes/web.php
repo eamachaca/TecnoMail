@@ -23,9 +23,6 @@ Route::get('view', [
     'uses' => 'HomeController@view'
 ]);
 Route::get('deito', function () {
-    $junked = \App\Folder::where('folder_name_id', 4)->where('user_id', 2)->first();
-    dd($junked);
-    dd(\App\Roster::where('folder_id', $junked->id)->get());
     $hostname = '{200.87.51.3/pop3/notls}INBOX';
     $username = 'grupo18sc';
     $password = 'grupo18grupo18';
