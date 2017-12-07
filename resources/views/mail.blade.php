@@ -56,6 +56,7 @@
                     @if($mail->readed)
                         <tr class="read">
                     @else
+
                         <tr class="unread">
                             @endif
                             <td class="check-mail">
