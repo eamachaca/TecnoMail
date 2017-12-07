@@ -11,12 +11,21 @@ class AllMailsSeeder extends Seeder
      */
     public function run()
     {
-
-        factory(\App\EMail::class, 20)->create();
-        $users = factory(\App\User::class, 50)->create();
-        factory(\App\Roster::class, 1000)->create();
+        factory(\App\EMail::class, 40)->create();
+        factory(\App\User::class, 10)->create();
+        \App\User::create([
+            'name' => 'Eduardo Andres Machaca Peña',
+            'first_name' => 'Eduardo',
+            'last_name' => 'Machaca',
+            'email' => 'eamachaca@hotmail.com',
+            'user' => 'DeIt0',
+            'password' => bcrypt('deitodeito'),
+            'remember_token' => str_random(10),
+        ]);
+        $users = \App\User::all();
+        factory(\App\Roster::class, 500)->create();
         $users->each(function ($user) {
-            factory(\App\Mail::class, 40)->create(['user_id' => $user->id]);
+            factory(\App\Mail::class, 50)->create(['user_id' => $user->id]);
         });
     }
 }

@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Roster::class, function (Faker $faker) {
     $name_folder_id = '';
-    if (\App\FolderName::all()->count() === 4 || $faker->boolean(5)) {
+    if (\App\FolderName::all()->count() === 4 || $faker->boolean(2)) {
         $name_folder_id = \App\FolderName::firstOrCreate(['name' => substr($faker->slug, 0, 20)])->id;
     } else {
         if ($faker->boolean(10))
@@ -17,7 +17,13 @@ $factory->define(\App\Roster::class, function (Faker $faker) {
         'folder_name_id' => $name_folder_id,
         'user_id' => $user_id
     ])->id;
-    return ['data' => $faker->firstName,
+    $word = $faker->word;
+    while (mb_strlen($word) < 3) {
+        $word = $faker->word;
+    }
+    echo $word . PHP_EOL;
+    return [
+        'data' => $faker->word,
         'user_id' => $user_id,
         'folder_id' => $folder_id,
     ];
