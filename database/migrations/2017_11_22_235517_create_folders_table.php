@@ -18,6 +18,7 @@ class CreateFoldersTable extends Migration
             $table->integer('folder_name_id', false, true);
             $table->integer('user_id', false, true);
             $table->integer('quantity')->default(0);
+            $table->integer('readed')->default(0);
             //$table->timestamps();
         });
     }

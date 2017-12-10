@@ -12,7 +12,6 @@ class Mail extends Model
      * @var array
      */
     protected $fillable = ['subject', 'body', 'sended', 'e_mail_id', 'user_id', 'readed',];
-    public $timestamps = false;
 
     public function user()
     {
@@ -45,6 +44,11 @@ class Mail extends Model
         foreach ($folders as $folder) {
             $rosters = $user->rosters->where('folder_id', $folder->id);
             if (Mail::inFolder($email, $rosters)) {
+                $folder->quantity++;
+                if (!$mail->readed) {
+                    $folder->readed++;
+                }
+                $folder->save();
                 FolderMail::create([
                     'mail_id' => $mail->id,
                     'folder_id' => $folder->id,
@@ -81,6 +85,11 @@ class Mail extends Model
                     Mail::addToFolders($user, $email, $mail);
                 }
             }
+            $folder->quantity++;
+            if (!$mail->readed) {
+                $folder->readed++;
+            }
+            $folder->save();
             $email->save();
             FolderMail::create([
                 'mail_id' => $mail->id,

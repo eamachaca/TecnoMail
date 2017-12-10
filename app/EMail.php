@@ -15,8 +15,6 @@ class EMail extends Model
         'e_mail', 'name',
     ];
 
-    public $timestamps = false;
-
     public function mails()
     {
         return $this->hasMany(Mail::class);

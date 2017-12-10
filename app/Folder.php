@@ -24,6 +24,11 @@ class Folder extends Model
         return $this->belongsTo(FolderName::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function rosters()
     {
         return $this->hasMany(Roster::class);

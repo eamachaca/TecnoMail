@@ -7,7 +7,7 @@ $factory->define(\App\Roster::class, function (Faker $faker) {
     if (\App\FolderName::all()->count() === 4 || $faker->boolean(2)) {
         $name_folder_id = \App\FolderName::firstOrCreate(['name' => substr($faker->slug, 0, 20)])->id;
     } else {
-        if ($faker->boolean(10))
+        if ($faker->boolean(60))
             $name_folder_id = rand(4, \App\FolderName::all()->count());
         else
             $name_folder_id = 4;
@@ -18,12 +18,12 @@ $factory->define(\App\Roster::class, function (Faker $faker) {
         'user_id' => $user_id
     ])->id;
     $word = $faker->word;
-    while (mb_strlen($word) < 3) {
+    while (strlen($word) < 3) {
         $word = $faker->word;
     }
     echo $word . PHP_EOL;
     return [
-        'data' => $faker->word,
+        'data' => $word,
         'user_id' => $user_id,
         'folder_id' => $folder_id,
     ];
