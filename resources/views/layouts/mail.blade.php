@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('css')
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
@@ -22,14 +21,15 @@
                                 <h5>Folders</h5>
                                 <ul class="folder-list m-b-md" style="padding: 0">
                                     @foreach($folders as $folder)
-                                        <li><a href="{{route('mail',['folder'=>$folder->name])}}"> <i class="fa fa-inbox "></i>
-                                                {{$folder->name}}
+                                        <li><a href="{{route('mail',['folder'=>$folder->folderName->name])}}"> <i
+                                                        class="fa fa-inbox "></i>
+                                                {{$folder->folderName->name}}
                                                 <span
-                                                        class="label label-black pull-right"> Mensaje loco xD 16</span>
+                                                        class="label label-black pull-right"> No leidos: {{$folder->readed}} / {{$folder->quantity}}</span>
                                             </a></li>
                                     @endforeach
                                 </ul>
-                                <h5>Categories</h5>
+                                <!--h5>Categories</--h5>
                                 <ul class="category-list" style="padding: 0">
                                     <li><a href="#"> <i class="fa fa-circle text-navy"></i> Work </a></li>
                                     <!--
@@ -38,13 +38,13 @@
                                     <li><a href="#"> <i class="fa fa-circle text-primary"></i> Social</a></li>
                                     <li><a href="#"> <i class="fa fa-circle text-info"></i> Advertising</a></li>
                                     <li><a href="#"> <i class="fa fa-circle text-warning"></i> Clients</a></li>
-                                    -->
+
                                 </ul>
 
                                 <h5 class="tag-title">Labels</h5>
                                 <ul class="tag-list" style="padding: 0">
                                     <li><a href="#"><i class="fa fa-tag"></i>Some Tag</a></li>
-                                </ul>
+                                </ul>  -->
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -56,5 +56,9 @@
     </div>
 @endsection
 @section('js')
-
+    <!-- Custom and plugin javascript -->
+    <!--script src="{{ asset('js/inspinia.js') }}"></script>
+    <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script-->
+    <script src="{{ asset('js/plugins/iCheck/icheck.min.js') }}"></script>
+    @yield('jss')
 @endsection
