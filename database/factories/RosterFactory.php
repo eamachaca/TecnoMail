@@ -4,10 +4,10 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Roster::class, function (Faker $faker) {
     $name_folder_id = '';
-    if (\App\FolderName::all()->count() === 4 || $faker->boolean(2)) {
+    if (\App\FolderName::all()->count() === 4 || $faker->boolean(1)) {
         $name_folder_id = \App\FolderName::firstOrCreate(['name' => substr($faker->slug, 0, 20)])->id;
     } else {
-        if ($faker->boolean(60))
+        if ($faker->boolean(70))
             $name_folder_id = rand(4, \App\FolderName::all()->count());
         else
             $name_folder_id = 4;

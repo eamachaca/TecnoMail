@@ -113,6 +113,6 @@
     placeholder: 'Escriba su Mensaje, Puede editarlo con las opciones ↑ ;    ',
     });
     @if(!is_null($body))
-        summernote.summernote("code","{!!$body!!}");
+        summernote.summernote("code",'{!!$body!!}');
     @endif
 @endpush

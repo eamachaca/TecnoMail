@@ -19,11 +19,12 @@
                 </div>
             </form>
             <h2>
-                {{$folder->folderName->name}} <strong>({{$folder->readed}})</strong>
+                {{__('Folder :NAME',['name'=>__($folder->folderName->name)])}} <strong>({{$folder->readed}})</strong>
             </h2>
             <div class="mail-tools tooltip-demo m-t-md">
                 <div class="btn-group pull-right">
-                    <label class="pull-left m-r-sm">Mostrando {{$mails->firstItem()}}-{{$mails->lastItem()}} de {{$mails->total()}}</label>
+                    <label class="pull-left m-r-sm">{{__('Showing')}} {{$mails->firstItem()}}
+                        -{{$mails->lastItem()}} {{__('of')}} {{$mails->total()}}</label>
                     @if(empty($previous))
                         <button class="btn btn-white btn-sm" disabled><i class="fa fa-arrow-left"></i></button>
                     @else
@@ -36,17 +37,19 @@
                     @endif
 
                 </div>
-                <a href="{{route('mail',['folder'=>$folder->folderName->name,'search'=>$search])}}" class="btn btn-white btn-sm"
+                <a href="{{route('mail',['folder'=>$folder->folderName->name,'search'=>$search])}}"
+                   class="btn btn-white btn-sm"
                    data-toggle="tooltip"
                    data-placement="left"
-                   title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh
+                   title="{{__('Refresh :NAME',['name'=>__($folder->folderName->name)])}}"><i
+                            class="fa fa-refresh"></i> {{__('Refresh')}}
                 </a>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
-                        title="Mark as read"><i class="fa fa-eye"></i></button>
+                        title="{{__('Mark as read')}}"><i class="fa fa-eye"></i></button>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
-                        title="Mark as important"><i class="fa fa-exclamation"></i></button>
+                        title="{{__('Mark as important')}}"><i class="fa fa-exclamation"></i></button>
                 <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
-                        title="Move to trash"><i class="fa fa-trash-o"></i></button>
+                        title="{{__('Move to trash')}}"><i class="fa fa-trash-o"></i></button>
 
             </div>
         </div>

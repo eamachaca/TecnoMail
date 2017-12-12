@@ -7,10 +7,11 @@ use App\EMail;
 use App\FolderMail;
 use App\Http\Requests\MailRequest;
 use App\Mail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail as Ml;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class HomeController extends Controller
 {
@@ -126,6 +127,8 @@ class HomeController extends Controller
         if (is_null($eMail)) {
             $eMail = EMail::create(['e_mail' => $only['email'], 'name' => 'Nombre Desconocido']);
         }
+
+        $name = $request->user()->first_name . ' ' . $request->user()->last_name;
         $mail = Mail::create([
             'subject' => $only['subject'],
             'body' => $message,
@@ -135,12 +138,41 @@ class HomeController extends Controller
             'e_mail_id' => $eMail->id,
 
         ]);
-        //Ml::to($eMail->e_mail)->send(new Mail\All($mail));
-        Ml::send('emails.all', ['mail' => $mail], function ($message) use ($mail, $eMail) {
-            $message->to($eMail->e_mail, $eMail->name)->subject
-            ($mail->body);
-            $message->from('xyz@gmail.com', 'Virat Gandhi');
-        });
-        dd('no quiero terminar xD');
+        if (str_contains($eMail->e_mail, 'hotmail')) {
+            Ml::send('emails.all', ['mail' => $mail], function ($message) use ($eMail, $mail, $name) {
+                $message->from('eamachacanet@gmail.com', $name);
+                $message->to($eMail->e_mail, $eMail->name);
+                $message->subject($mail->subject);
+            });
+        } else {
+            $mailer = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mailer->isSMTP();                                      // Set mailer to use SMTP
+                $mailer->Host = env('FICCT_HOST');                  // Specify main and backup SMTP servers
+                $mailer->SMTPAuth = false;                               // Enable SMTP authentication
+                $mailer->Username = env('FICCT_USERNAME');                 // SMTP username
+                $mailer->Password = env('FICCT_PASSWORD');                           // SMTP password
+                $mailer->SMTPSecure = false;                            // Enable TLS encryption, `ssl` also accepted
+                $mailer->Port = 25;                                    // TCP port to connect to
+                // Sender
+                $mailer->setFrom("grupo18sc@mail.ficct.uagrm.edu.bo", $name);
+                // who will receive the email submission
+                $mailer->addAddress($eMail->e_mail, $eMail->name);
+                //Attachments
+                // $mailer->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                // $mailer->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                //Content
+                //$mailer->isHTML(true);                                  // Set email format to HTML
+                $mailer->Subject = $mail->subject;
+                $mailer->msgHTML($mail->body);
+                $mailer->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+                $mailer->send();
+            } catch (Exception $e) {
+                echo 'Message could not be sent.';
+                dd('Mailer Error: ' . $mailer->ErrorInfo);
+            }
+        }
+        return redirect()->route('mail');
     }
 }

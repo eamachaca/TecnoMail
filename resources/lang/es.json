@@ -1,0 +1,16 @@
+{
+  "Folders": "Carpetas",
+  "Folder :NAME": "Carpeta :NAME",
+  "inbox": "Bandeja de Entrada",
+  "outbox": "Bandeja de Salida",
+  "junked": "Correo no deseado",
+  "draft": "Borradores",
+  "Compose Mail": "Crear Correo",
+  "Showing": "Mostrando",
+  "of": "de",
+  "Refresh": "Actualizar",
+  "Mark as read": "Marcar como Leído",
+  "Move to trash": "Eliminar",
+  "Mark as important": "Marcar como Importante",
+  "Refresh :NAME": "Actualizar :NAME"
+}

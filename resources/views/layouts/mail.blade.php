@@ -15,17 +15,20 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-content mailbox-content">
                             <div class="file-manager">
-                                <a class="btn btn-block btn-primary compose-mail" href="{{route('compose')}}">Compose
-                                    Mail</a>
+                                <a class="btn btn-block btn-primary compose-mail" href="{{route('compose')}}">
+                                    {{__('Compose Mail')}}</a>
                                 <div class="space-25"></div>
-                                <h5>Folders</h5>
+                                <h5>
+                                    {{__('Folders')}}
+                                </h5>
                                 <ul class="folder-list m-b-md" style="padding: 0">
                                     @foreach($folders as $folder)
                                         <li><a href="{{route('mail',['folder'=>$folder->folderName->name])}}"> <i
                                                         class="fa fa-inbox "></i>
-                                                {{$folder->folderName->name}}
+                                                {{__($folder->folderName->name)}}
                                                 <span
-                                                        class="label label-black pull-right"> No leidos: {{$folder->readed}} / {{$folder->quantity}}</span>
+                                                        class="label label-black pull-right"> No leidos: {{$folder->readed}}
+                                                    / {{$folder->quantity}}</span>
                                             </a></li>
                                     @endforeach
                                 </ul>
