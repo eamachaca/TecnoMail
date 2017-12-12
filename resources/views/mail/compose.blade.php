@@ -9,9 +9,9 @@
         <div class="mail-box-header">
             <div class="pull-right tooltip-demo">
                 <a href="{{route('mail')}}" class="btn btn-white btn-sm" data-toggle="tooltip"
-                   data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+                   data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> {{__('Draft')}}</a>
                 <a href="{{route('mail')}}" class="btn btn-danger btn-sm" data-toggle="tooltip"
-                   data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                   data-placement="top" title="Discard email"><i class="fa fa-times"></i> {{__('Discard')}}</a>
             </div>
             <h2>
                 Compose mail
@@ -31,7 +31,7 @@
                             </ul>
                         </div>
                     @endif
-                    <div class="form-group"><label class="col-sm-2 control-label">To:</label>
+                    <div class="form-group"><label class="col-sm-2 control-label">{{__('To')}}:</label>
 
                         <div class="col-sm-10">
                             <input name="email" type="email" class="form-control"
@@ -39,7 +39,7 @@
                             >
                         </div>
                     </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">Subject:</label>
+                    <div class="form-group"><label class="col-sm-2 control-label">{{__('Subject')}}:</label>
 
                         <div class="col-sm-10">
                             <input name="subject" type="text" class="form-control"

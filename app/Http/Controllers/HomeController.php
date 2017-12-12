@@ -53,13 +53,13 @@ class HomeController extends Controller
             $next = str_replace('?', '?search=' . $search . '&', $next);
             $previous = str_replace('?', '?search=' . $search . '&', $previous);
         }
-        return view('mail')->with([
+        return view('mail.mail')->with([
             'folders' => Auth::user()->folders,
             'folder' => $folder,
             'mails' => $mails,
             'previous' => $previous,
             'next' => $next,
-            'search' => $search
+            'search' => $search,
         ]);
     }
 
@@ -83,7 +83,7 @@ class HomeController extends Controller
                     return redirect()->route('compose');
                 }
             }
-            return view('compose')->with([
+            return view('mail.compose')->with([
                 'folders' => Auth::user()->folders,
                 'subject' => $forward_subject,
                 'to' => $reply_to,
@@ -104,7 +104,7 @@ class HomeController extends Controller
                 $mailF->folder->readed--;
                 $mailF->folder->save();
             }
-            return view('view')->with([
+            return view('mail.view')->with([
                 'folders' => Auth::user()->folders,
                 'mail' => $mailF->mail,
             ]);;

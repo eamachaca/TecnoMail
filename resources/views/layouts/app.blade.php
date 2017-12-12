@@ -56,7 +56,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" style="background-color: #18a689;">
-                                    <li><a style="color: white;" href="{{ route('mail') }}">{{__('Folders')}}</a></li>
+                                    <li><a style="color: white;" href="{{ route('folder.index') }}">{{__('Folders')}}</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

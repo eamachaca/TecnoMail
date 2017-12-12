@@ -15,9 +15,8 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Auth::routes();
-Route::get('deito',function (){
-   dd(\App\User::all());
-});
+
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -26,6 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'mail',
         'uses' => 'HomeController@mail'
     ]);
+
+    Route::resource('folder', 'FolderController', ['only' => [
+        'index', 'store'
+    ]]);
 
     Route::get('compose', [
         'as' => 'compose',

@@ -12,5 +12,19 @@
   "Mark as read": "Marcar como Leído",
   "Move to trash": "Eliminar",
   "Mark as important": "Marcar como Importante",
-  "Refresh :NAME": "Actualizar :NAME"
+  "Refresh :NAME": "Actualizar :NAME",
+  "Edit": "Editar",
+  "Rules": "Reglas",
+  "Name": "Nombre",
+  "Create": "Nuevo",
+  "Draft": "Al Borrador",
+  "Discard": "Cancelar",
+  "To": "Para",
+  "Subject": "Asunto",
+  "From": "De",
+  "View Message": "Vista del Mensaje",
+  "Reply": "Responder",
+  "Forward": "ReEnviar",
+  "Print": "Imprimir",
+  "Remove": "Eliminar"
 }
