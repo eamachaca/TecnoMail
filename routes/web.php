@@ -30,6 +30,16 @@ Route::group(['middleware' => 'user'], function () {
         'index', 'store'
     ]]);
 
+    Route::get('roster/{id}', [
+        'as' => 'roster.show',
+        'uses' => 'RosterController@show'
+    ]);
+
+    Route::post('roster', [
+        'as' => 'roster.store',
+        'uses' => 'RosterController@store'
+    ]);
+
     Route::get('compose', [
         'as' => 'compose',
         'uses' => 'HomeController@compose'
