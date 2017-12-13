@@ -5,18 +5,7 @@
     <th>Acciones</th>
 @endsection
 @section('tbody')
-    @foreach($folders as $folder)
-        <tr id="{{$folder->id}}">
-            <td>{{$loop->index+1}}</td>
-            <td>{{__($folder->folderName->name)}}</td>
-            <td>
-                @if($folder->folderName->id>4)
-                    <a href="{{route('roster.show',$folder->id)}}" class="btn btn-warning">{{__('Rules')}}</a>
-                    <button onclick="addId(this)" data-dismiss="modal" class="btn btn-primary">{{__('Edit')}}</button>
-                @endif
-            </td>
-        </tr>
-    @endforeach
+
 @endsection
 @section('content_modal')
     <div class="form-group"><label for="folder" class="col-sm-2 control-label">{{__('Name')}}:</label>
