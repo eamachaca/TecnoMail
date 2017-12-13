@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 100)->unique();
             $table->string('password', 100);
             $table->unsignedInteger('file_id')->nullable();
-            $table->integer('prioridad')->default(1);
+            $table->boolean('prioridad')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

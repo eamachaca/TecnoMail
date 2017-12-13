@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'user'], function () {
     // Routes Within The "auth" middleware
     Route::get('mail', [
         'as' => 'mail',
@@ -43,6 +43,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('compose', [
         'as' => 'send',
         'uses' => 'HomeController@send'
+    ]);
+});
+Route::group([
+    'middleware' => 'admin',
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+], function () {
+    Route::get('mail', [
+        'as' => 'admin.mail',
+        'uses' => 'MailController@index'
     ]);
 });
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -24,7 +24,7 @@ Route::get('read', function () {
     $inbox = imap_open($hostname, $username, $password) or die('Ha fallado la conexión: ' . imap_last_error());
     $emails = imap_search($inbox, 'ALL');
     if (is_array($emails)) {
-        $dotero = [];
+        $mails = [];
         foreach ($emails as $email_number) {
             $overview = imap_fetch_overview($inbox, $email_number, 0);
             $structure = imap_fetchstructure($inbox, $email_number);

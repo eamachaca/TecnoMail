@@ -26,5 +26,13 @@
   "Reply": "Responder",
   "Forward": "ReEnviar",
   "Print": "Imprimir",
-  "Remove": "Eliminar"
+  "Remove": "Eliminar",
+  "Full Name":"Nombre Completo",
+  "Dashboard":"Menu Inicio",
+  "Confirm Password":"Confirmar Contraseña",
+  "User": "Usuario",
+  "First Name": "Primer Nombre",
+  "Last Name": "Primer Apellido",
+  "E-Mail Address": "Correo Electronico",
+  "Password":"Contraseña"
 }

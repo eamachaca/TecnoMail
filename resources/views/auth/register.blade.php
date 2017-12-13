@@ -12,7 +12,7 @@
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                                <label for="first_name" class="col-md-4 control-label">First Name</label>
+                                <label for="first_name" class="col-md-4 control-label">{{__('First Name')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="first_name" type="text" class="form-control" name="first_name"
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-                                <label for="last_name" class="col-md-4 control-label">Last Name</label>
+                                <label for="last_name" class="col-md-4 control-label">{{__('Last Name')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="last_name" type="text" class="form-control" name="last_name"
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Name</label>
+                                <label for="name" class="col-md-4 control-label">{{__('Full Name')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name"
@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('user') ? ' has-error' : '' }}">
-                                <label for="user" class="col-md-4 control-label">User</label>
+                                <label for="user" class="col-md-4 control-label">{{__('User')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="user" type="text" class="form-control" name="user"
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="col-md-4 control-label">{{__('E-Mail Address')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <label for="password" class="col-md-4 control-label">{{__('Password')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" required>
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-4 control-label">{{__('Confirm Password')}}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
