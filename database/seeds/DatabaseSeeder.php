@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         //factory(\App\EMail::class, 100)->create();
         //$this->call(UsersTableSeeder::class);
         $this->call(AllMailsSeeder::class);
+        $this->call(FakeQuantitiesSeeder::class);
     }
 }

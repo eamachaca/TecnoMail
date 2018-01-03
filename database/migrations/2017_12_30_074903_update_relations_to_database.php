@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRelationsToDatabase extends Migration
+class UpdateRelationsToDatabase extends Migration
 {
     /**
      * Run the migrations.
@@ -54,6 +54,9 @@ class AddRelationsToDatabase extends Migration
             $table->foreign('file_id')
                 ->references('id')
                 ->on('files');
+            $table->foreign('e_mail_id')
+                ->references('id')
+                ->on('e_mails');
         });
     }
 
@@ -64,6 +67,9 @@ class AddRelationsToDatabase extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['file_id'],['e_mail_id']);
+        });
         Schema::table('files', function (Blueprint $table) {
             $table->dropForeign(['mail_id']);
         });
@@ -78,9 +84,6 @@ class AddRelationsToDatabase extends Migration
         });
         Schema::table('rosters', function (Blueprint $table) {
             $table->dropForeign(['user_id'], ['folder_id']);
-        });
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['file_id']);
         });
     }
 }

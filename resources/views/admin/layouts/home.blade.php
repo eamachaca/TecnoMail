@@ -9,7 +9,7 @@
             <div class="col-lg-8">
             </div>
             <div class="panel-body">
-
+                @yield('more')
             </div>
             <!-- /.panel-body -->
         </div>

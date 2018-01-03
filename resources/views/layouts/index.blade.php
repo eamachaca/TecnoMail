@@ -59,7 +59,7 @@
                     <div class="modal-body">
                         @yield('content_modal')
                         <input name="_token" type="text" value="{{csrf_token()}}" hidden>
-                        <input name="id" type="text" value="" hidden>
+                        <input id="id" name="id" type="text" value="" hidden>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-default">{{__('Save')}}</button>

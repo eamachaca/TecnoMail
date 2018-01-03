@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Counter;
 use App\EMail;
 use App\FolderMail;
 use App\Http\Requests\MailRequest;
@@ -53,6 +54,15 @@ class HomeController extends Controller
             $next = str_replace('?', '?search=' . $search . '&', $next);
             $previous = str_replace('?', '?search=' . $search . '&', $previous);
         }
+        $counter = Counter::where('user_id', Auth::user()->id)->where('place', $folder->folderName->name)->first();
+        if (is_null($counter)) {
+            $counter = Counter::create([
+                'user_id' => Auth::user()->id,
+                'place' => $folder->folderName->name
+            ]);
+        }
+        $counter->quantity++;
+        $counter->save();
         return view('mail.mail')->with([
             'folders' => Auth::user()->folders,
             'folder' => $folder,
@@ -60,6 +70,7 @@ class HomeController extends Controller
             'previous' => $previous,
             'next' => $next,
             'search' => $search,
+            'count' => $counter->quantity
         ]);
     }
 
@@ -83,7 +94,18 @@ class HomeController extends Controller
                     return redirect()->route('compose');
                 }
             }
+
+            $counter = Counter::where('user_id', Auth::user()->id)->where('place', 'compose')->first();
+            if (is_null($counter)) {
+                $counter = Counter::create([
+                    'user_id' => Auth::user()->id,
+                    'place' => 'compose'
+                ]);
+            }
+            $counter->quantity++;
+            $counter->save();
             return view('mail.compose')->with([
+                'count' => $counter->quantity,
                 'folders' => Auth::user()->folders,
                 'subject' => $forward_subject,
                 'to' => $reply_to,
@@ -104,7 +126,18 @@ class HomeController extends Controller
                 $mailF->folder->readed--;
                 $mailF->folder->save();
             }
+            $counter = Counter::where('user_id', Auth::user()->id)->where('place', 'compose')->first();
+            if (is_null($counter)) {
+                $counter = Counter::create([
+                    'user_id' => Auth::user()->id,
+                    'place' => 'compose'
+                ]);
+            }
+            $counter->quantity++;
+            $counter->save();
+
             return view('mail.view')->with([
+                'count' => $counter->quantity,
                 'folders' => Auth::user()->folders,
                 'mail' => $mailF->mail,
             ]);;

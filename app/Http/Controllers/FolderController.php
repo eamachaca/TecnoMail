@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Counter;
 use App\Folder;
 use App\FolderName;
 use App\Http\Requests\FolderRequest;
@@ -17,9 +18,19 @@ class FolderController extends Controller
      */
     public function index()
     {
+        $counter = Counter::where('user_id', Auth::user()->id)->where('place', 'folderView')->first();
+        if (is_null($counter)) {
+            $counter = Counter::create([
+                'user_id' => Auth::user()->id,
+                'place' => 'folderView'
+            ]);
+        }
+        $counter->quantity++;
+        $counter->save();
         return view('mail.folder.index')->with([
             'folders' => Auth::user()->folders,
-            'tittle' => __('Folders')
+            'tittle' => __('Folders'),
+            'count'=>$counter->quantity
         ]);
     }
 

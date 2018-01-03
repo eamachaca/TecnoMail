@@ -64,6 +64,26 @@ Route::group([
         'as' => 'admin.mail',
         'uses' => 'MailController@index'
     ]);
+
+    Route::get('user', [
+        'as' => 'admin.users.index',
+        'uses' => 'MailController@users'
+    ]);
+
+
+    Route::get('count', [
+        'as' => 'admin.counts.index',
+        'uses' => 'MailController@counts'
+    ]);
+    Route::get('count/{id}', [
+        'as' => 'admin.counts.show',
+        'uses' => 'MailController@count'
+    ]);
+
+    Route::get('user/{id}', [
+        'as' => 'admin.users.show',
+        'uses' => 'MailController@user'
+    ]);
 });
 //Route::get('/home', 'HomeController@index')->name('home');
 

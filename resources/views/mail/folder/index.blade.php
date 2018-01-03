@@ -1,8 +1,8 @@
 @extends('layouts.index')
 @section('route',route('folder.store'))
 @section('th')
-    <th style="height: 60%;">Nombre</th>
-    <th>Acciones</th>
+    <th style="height: 60%;">{{__('Name')}}</th>
+    <th>{{__('Actions')}}</th>
 @endsection
 @section('tbody')
     @foreach($folders as $folder)
@@ -38,8 +38,9 @@
 
         function addId(td) {
             id = $(td).parents('tr').attr('id');
-            $('#myModal').modal("show")
+            $('#myModal').modal("show");
             $('#id').val(id);
+            $('#name').val($(td).parents('td').prev().html());
         }
     </script>
 @endsection

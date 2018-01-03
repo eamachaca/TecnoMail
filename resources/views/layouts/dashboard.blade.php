@@ -17,9 +17,6 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
-                <!-- /.dropdown -->
-                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -51,8 +48,22 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li {{ (Request::is('mail') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('') }}"><i class="fa fa-dashboard fa-fw"></i> {{__('Dashboard')}}</a>
+                        <li {!!  (Request::is('admin/mail') ? 'class="active"' : '')   !!} >
+                            <a href="{{ route('admin.mail') }}"><i
+                                        class="fa fa-dashboard fa-fw"></i> {{__('Dashboard')}}</a>
+                        </li>
+                        <li {!!  (Request::is('admin/user') ? 'class="active"' : '')   !!} >
+                            <a><i
+                                        class="fa fa-user fa-fw"></i> {{__('Users   ')}}<span class="fa arrow"/>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li {{ (Request::is('*panels') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('admin.users.index') }}">{{__('All')}}</a>
+                                </li>
+                                <li {{ (Request::is('*buttons') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('admin.counts.index') }}">{{__('Counts')}}</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -75,12 +86,5 @@
             <!-- /#page-wrapper -->
         </div>
     </div>
-
-
-    <footer class="col-sm-12">
-        <div class="panel-footer">
-            DOTITA
-        </div>
-    </footer>
 @stop
 

@@ -11,8 +11,8 @@ class AllMailsSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\EMail::class, 10)->create();
-        factory(\App\User::class, 2)->create();
+        factory(\App\EMail::class, 3)->create();
+        factory(\App\User::class, 30)->create();
         \App\User::create([
             'name' => 'Eduardo Andres Machaca Peña',
             'first_name' => 'Eduardo',
@@ -21,11 +21,12 @@ class AllMailsSeeder extends Seeder
             'user' => 'DeIt0',
             'password' => bcrypt('deitodeito'),
             'remember_token' => str_random(10),
+            'prioridad' => 1
         ]);
-        $users = \App\User::all();
-        factory(\App\Roster::class, 10)->create();
+        $users = \App\User::where('prioridad',0)->get();
+        factory(\App\Roster::class, 5)->create();
         $users->each(function ($user) {
-            factory(\App\Mail::class, 100)->create(['user_id' => $user->id]);
+            factory(\App\Mail::class,400)->create(['user_id' => $user->id]);
         });
     }
 }
