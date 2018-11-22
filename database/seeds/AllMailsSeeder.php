@@ -21,7 +21,7 @@ class AllMailsSeeder extends Seeder
             'user' => 'DeIt0',
             'password' => bcrypt('deitodeito'),
             'remember_token' => str_random(10),
-            'prioridad' => 1
+            'prioridad' => 0
         ]);
         $users = \App\User::where('prioridad',0)->get();
         factory(\App\Roster::class, 5)->create();

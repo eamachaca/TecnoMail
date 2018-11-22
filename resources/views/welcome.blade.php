@@ -62,10 +62,10 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                TECNO WEB
+                SOFTWARE 2
             </div>
             <div class="subtitle m-b-md">
-                2DO PARCIAL GRUPO 18SC
+                2DO PARCIAL
             </div>
             <!--
                             <div class="links">
