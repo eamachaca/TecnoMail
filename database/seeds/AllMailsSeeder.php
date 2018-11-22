@@ -15,11 +15,11 @@ class AllMailsSeeder extends Seeder
         factory(\App\User::class, 30)->create();
         \App\User::create([
             'name' => 'Eduardo Andres Machaca Peña',
-            'first_name' => 'Eduardo',
-            'last_name' => 'Machaca',
+            'first_name' => 'Carla',
+            'last_name' => 'Anahi',
             'email' => 'eamachaca@hotmail.com',
-            'user' => 'DeIt0',
-            'password' => bcrypt('deitodeito'),
+            'user' => 'carla',
+            'password' => bcrypt('carlacarla'),
             'remember_token' => str_random(10),
             'prioridad' => 0
         ]);
