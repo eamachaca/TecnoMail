@@ -26,7 +26,7 @@ class AllMailsSeeder extends Seeder
         $users = \App\User::all();
         factory(\App\Roster::class, 5)->create();
         $users->each(function ($user) {
-            factory(\App\Mail::class,2)->create(['user_id' => $user->id]);
+            factory(\App\Mail::class,500)->create(['user_id' => $user->id]);
         });
     }
 }

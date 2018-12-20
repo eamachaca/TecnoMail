@@ -67,7 +67,6 @@ class HomeController extends Controller
             ]);
         }
         $counter->quantity++;
-        dd($mails);
         $counter->save();
         return view('mail.mail')->with([
             'folders' => Auth::user()->folders,
