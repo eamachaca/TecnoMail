@@ -81,6 +81,21 @@
                 </thead>
                 <tbody>
                 @forelse ($mails as $mail)
+                    @php
+                        $decode=json_decode($mail->recognized);
+                        $emotions=$decode->emotion->document->emotion;
+                        $sentiments=$decode->sentiment->document;
+                        $emotions=collect([
+                            ["label"=>"Feliz","value"=>$emotions->joy],
+                            ["label"=>"Asustado","value"=>$emotions->fear],
+                            ["label"=>"Enojado","value"=>$emotions->anger],
+                            ["label"=>"Triste","value"=>$emotions->sadness],
+                            ["label"=>"Asqueado","value"=>$emotions->disgust]
+                        ]);
+                        $sentiment=collect($sentiments);
+                        $emotions=$emotions->sortBy('value');
+                        $emotion=$emotions->pop();
+                    @endphp
                     @if($mail->readed)
                         <tr class="read">
                     @else
@@ -96,14 +111,39 @@
                                 <a href="{{route('view',['mail'=>$mail->id])}}">{{$mail->subject}}</a>
                             </td>
                             <td class="mail-box-header">
-                                
+                                <label>{{$sentiment['label']." ".number_format($sentiment['score']*100,2,".",",")."%"}}</label>
                             </td>
-                            <td class="mail-box-header">
-                                
+                            <td class="mail-box-header" >
+                                <label  data-toggle="modal" data-target="#myModal{{$mail->id}}">
+                                    {{$emotion['label']." ". number_format($emotion['value']*100,2,".",",")."%"}}
+                                </label>
                             </td>
                             <td class="mail-box-header">@empty(!$mail->rosters)<i class="fa fa-paperclip">@endempty</i></td>
                             <td class="text-right mail-date">{{$mail->hourHumans()}}</td>
                         </tr>
+
+<!-- Modales (por mail)-->
+<div id="myModal{{$mail->id}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        @foreach($emotions as $emotion)
+            <label>{{$emotion['label']}}:</label>{{number_format($emotion['value']*100,2,".",",")."%"}}
+        @endforeach
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
                         @empty
                             <tr class="unread">
                                 <td class="mailbox-content" colspan="4">
