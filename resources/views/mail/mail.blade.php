@@ -56,6 +56,29 @@
         <div class="mail-box">
 
             <table class="table table-hover table-mail">
+                <thead>
+                    <th class="mail-box-header">
+                        <input type="checkbox" id="all_check">
+                    </th>
+                    <th class="mail-box-header">
+                        <label>E-Mail</label>
+                    </th>
+                    <th class="mail-box-header">
+                        <label>Asunto</label>
+                    </th>
+                    <th class="mail-box-header">
+                        <label>Sentimiento</label>
+                    </th>
+                    <th>
+                        <label>Emocion</label>
+                    </th>
+                    <th class="mail-box-header">
+                        <label></label>
+                    </th>
+                    <th class="mail-box-header">
+                        <label>Hora</label>
+                    </th>
+                </thead>
                 <tbody>
                 @forelse ($mails as $mail)
                     @if($mail->readed)
@@ -72,7 +95,13 @@
                             <td class="mail-subject">
                                 <a href="{{route('view',['mail'=>$mail->id])}}">{{$mail->subject}}</a>
                             </td>
-                            <td class="">@empty(!$mail->rosters)<i class="fa fa-paperclip">@endempty</i></td>
+                            <td class="mail-box-header">
+                                
+                            </td>
+                            <td class="mail-box-header">
+                                
+                            </td>
+                            <td class="mail-box-header">@empty(!$mail->rosters)<i class="fa fa-paperclip">@endempty</i></td>
                             <td class="text-right mail-date">{{$mail->hourHumans()}}</td>
                         </tr>
                         @empty

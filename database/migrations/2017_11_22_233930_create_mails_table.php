@@ -17,6 +17,8 @@ class CreateMailsTable extends Migration
             $table->increments('id');
             $table->string('subject',70);
             $table->text('body');
+            $table->text('translated');
+            $table->json('recognized');
             $table->boolean('readed');
             $table->boolean('sended');
             $table->unsignedInteger('e_mail_id');

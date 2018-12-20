@@ -19,6 +19,7 @@ class CreateFolderMailsTable extends Migration
             $table->integer('folder_id', false, true);
             $table->string('subject', 70);
             $table->string('e_mail', 40);
+            $table->json('recognized');
             $table->boolean('readed');
             $table->unique(['mail_id', 'folder_id']);
             $table->timestamps();

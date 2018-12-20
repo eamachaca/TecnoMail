@@ -104,7 +104,8 @@ class Mail extends Model
                 'folder_id' => $folder->id,
                 'subject' => $mail->subject,
                 'e_mail' => $email->e_mail,
-                'readed' => $mail->readed
+                'readed' => $mail->readed,
+                'recognized'=> $mail->recognized
             ]);
         });
     }

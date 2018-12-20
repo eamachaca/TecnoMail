@@ -14,8 +14,12 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
-Auth::routes();
+Route::post('recognizes', [
+    'as'=> 'recognize',
+    'uses' => 'RecognizeController@recognize'
+]);
 
+Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -53,6 +57,9 @@ Route::group(['middleware' => 'user'], function () {
     Route::post('compose', [
         'as' => 'send',
         'uses' => 'HomeController@send'
+    ]);
+    Route::get('recognize', [
+        'uses' => 'RecognizeController@recognizeView'
     ]);
 });
 Route::group([

@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail as Ml;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+/*
+watson
+*/
+use WatsonSDK\Common\WatsonCredential;
+use WatsonSDK\Services\NaturalLanguageUnderstanding;
+use WatsonSDK\Services\NaturalLanguageUnderstanding\AnalyzeModel;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +28,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except' => 'recognize']);
     }
 
     /**
@@ -62,6 +67,7 @@ class HomeController extends Controller
             ]);
         }
         $counter->quantity++;
+        dd($mails);
         $counter->save();
         return view('mail.mail')->with([
             'folders' => Auth::user()->folders,
